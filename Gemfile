@@ -17,6 +17,8 @@ gem 'mongo', :require => 'mongo'
 
 # Redis, Resque, Resque-scheduler
 gem "redis"
+gem 'redis_failover'
+
 gem "resque", :require => 'resque/server'
 gem 'resque-scheduler', :require => 'resque_scheduler'
 
