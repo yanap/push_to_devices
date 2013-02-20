@@ -29,6 +29,9 @@ listen '/tmp/push_to_devices.sock', :backlog => 2048
 
 worker_processes 2
 
+stdout_path "#{APP_ROOT}/unicorn.log"
+stderr_path "#{APP_ROOT}/unicorn.log"
+
 #30秒以上処理しているワーカーは再起動
 timeout 30
 
