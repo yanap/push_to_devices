@@ -40,6 +40,11 @@ group "test" do
   gem 'webmock'
 end
 
+# monitor server
+gem 'bluepill'
+
+# Launch server
+gem 'unicorn'
 
 # Padrino Stable Gem
 gem 'padrino', '0.10.7'
