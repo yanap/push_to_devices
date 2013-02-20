@@ -12,6 +12,13 @@ test:
       hosts:
         - localhost:27017
 
+staging:
+  sessions:
+    default:
+      database: push_to_device_stg
+      hosts:
+        - localhost:27017
+
 production:
   sessions:
     default:
