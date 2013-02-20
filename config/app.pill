@@ -1,8 +1,13 @@
 ENV['RACK_ENV'] ||= 'development'
 rack_env = ENV['RACK_ENV']
 app_dir = working_dir = "/var/24log/push_to_devices"
+bluepill_opts = {
+    :base_dir => app_dir,
+    :log_file => "#{app_dir}/bluepill.log"
+  }
 
 ENV["BUNDLE_GEMFILE"] ||= "#{working_dir}/Gemfile"
+
 
 def process_pid(process_name)
   `ps aux | grep #{process_name} | grep -v grep`.split(/\s/).reject{|x| x==""}.fetch(1, nil)
