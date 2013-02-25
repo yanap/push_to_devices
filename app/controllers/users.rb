@@ -34,7 +34,10 @@ PushToDeviceServer.controllers :users do
 
     if data["apn_device_token"]
       Padrino::logger.info "attempt to append apn_device_token user:#{@service_user}"
-      if @service_user.apn_device_tokens.where(apn_device_token: data["apn_device_token"]).empty?
+      this_users_apn_token = @service_user.apn_device_tokens.where(apn_device_token: data["apn_device_token"])
+      Padrino::logger.info "this user's apn token:#{this_users_apn_token}"
+
+      if this_users_apn_token.empty?
         Padrino::logger.info "user:#{@service_user} append apn_device_token:#{data["apn_device_token"]}"
         @service_user.apn_device_tokens.build(apn_device_token: data["apn_device_token"]).save!
       end
