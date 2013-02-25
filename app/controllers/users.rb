@@ -28,6 +28,8 @@ PushToDeviceServer.controllers :users do
 
     error 422, {error: "unique_hash not provided"}.to_json unless data["unique_hash"]
 
+    Padrino::logger.info "create user(#{data["unique_hash"]}) tokens"
+
     @service_user = api_current_user.users.where(
       unique_hash: data["unique_hash"]
     ).first_or_create!
@@ -35,7 +37,7 @@ PushToDeviceServer.controllers :users do
     if data["apn_device_token"]
       Padrino::logger.info "attempt to append apn_device_token user:#{@service_user}"
       this_users_apn_token = @service_user.apn_device_tokens.where(apn_device_token: data["apn_device_token"])
-      Padrino::logger.info "this user's apn token:#{this_users_apn_token}"
+      Padrino::logger.info "this user's apn token empty?:#{this_users_apn_token.empty?} tokens:#{@service_user.apn_device_tokens}"
 
       if this_users_apn_token.empty?
         Padrino::logger.info "user:#{@service_user} append apn_device_token:#{data["apn_device_token"]}"
