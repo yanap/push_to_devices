@@ -3,6 +3,7 @@ staging: &staging
   retry_failure: true
   max_retries: 3
   master_only: true
+  db: 2
 
 production:
   <<: &staging

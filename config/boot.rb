@@ -47,4 +47,6 @@ end
 Padrino.after_load do
 end
 
+Padrino::Logger::Config[:production] = { :log_level => :debug, :stream => :to_file }
+
 Padrino.load!
