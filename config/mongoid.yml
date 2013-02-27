@@ -24,4 +24,8 @@ production:
     default:
       database: push_to_device_prod
       hosts:
-        - localhost:27017
+        - 10.0.10.239:27017
+        - 10.0.10.31:27017
+        - 10.0.11.206:27017
+      options:
+        consistency: :strong
