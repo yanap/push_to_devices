@@ -1,10 +1,10 @@
 staging: &staging
   zkservers: 10.0.20.8:2181,10.0.20.242:2181,10.0.20.242:2182
   retry_failure: true
-  max_retries: 3
+  max_retries: 5
   master_only: true
   db: 2
 
 production:
-  <<: &staging
+  <<: *staging
   zkservers: 10.0.10.239:2181,10.0.10.31:2181,10.0.11.206:2181
