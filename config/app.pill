@@ -73,6 +73,7 @@ Bluepill.application('push_to_devices', bluepill_opts) do |app|
 
   4.times do |i|
     app.process("resque-#{i}") do |process|
+
       process.working_dir = working_dir
       process.group = 'resque'
       process.start_command = 'bundle exec padrino rake resque:work QUEUE=high,normal,low INTERVAL=0.5 VERBOSE=true TERM_CHILD=1 RESQUE_TERM_TIMEOUT=7'
@@ -81,16 +82,11 @@ Bluepill.application('push_to_devices', bluepill_opts) do |app|
       process.pid_file = "#{working_dir}/shared/resque-#{i}.pid"
       process.daemonize = true
 
-      process.monitor_children do |child_process|
-        #Immediately kill child but don't exit
-        child_process.stop_command = "kill -TERM {{PID}}"
-        child_process.checks :mem_usage, :every => 30.seconds, :below => 100.megabytes, :fires => [:stop]
-      end
-
       process.start_grace_time = 60.seconds
       process.stop_grace_time = 60.seconds
       process.restart_grace_time = 90.seconds
       process.uid = process.gid = 'deployer'
+
       process.checks :mem_usage, :below => 350.megabytes, :every => 1.minute, :times => 3
     end
   end
