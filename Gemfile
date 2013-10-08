@@ -29,7 +29,7 @@ gem 'pushmeup', :git => "git://github.com/lloydmeta/pushmeup.git", :branch => "h
 gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 
-gem 'will_paginate', :git => "git://github.com/mislav/will_paginate.git", :branch => "master"
+gem 'will_paginate', "3.0.3"
 
 # Test requirements
 group "test" do
