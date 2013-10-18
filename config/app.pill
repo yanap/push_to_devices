@@ -40,9 +40,9 @@ Bluepill.application('push_to_devices', bluepill_opts) do |app|
     end
   end
 
-  redis_node_manager_pname = "redis_node_manager"
-  if process_pid(redis_node_manager_pname).nil?
-    app.process(redis_node_manager_pname) do |process|
+   redis_node_manager_pname = "redis_node_manager"
+#  if process_pid(redis_node_manager_pname).nil?
+   app.process(redis_node_manager_pname) do |process|
       process.working_dir = working_dir
       process.group = 'redis'
       process.start_command = "bundle exec redis_node_manager -E #{rack_env} -C #{working_dir}/config/redis_node_manager.yml"
@@ -54,8 +54,8 @@ Bluepill.application('push_to_devices', bluepill_opts) do |app|
       process.stop_grace_time = 30.seconds
       process.restart_grace_time = 30.seconds
       process.uid = process.gid = 'deployer'
-    end
-  end
+   end
+#  end
 
   app.process("resque-scheduler") do |process|
     process.working_dir = working_dir
