@@ -48,11 +48,7 @@ Padrino.after_load do
   require 'will_paginate/mongoid'
 end
 
-#Padrino::Logger::Config[:production] = { :log_level => :debug, :stream => :to_file }
-if PADRINO_ENV == 'production'
-  PADRINO_LOGGER = { :production => { :log_level => :debug, :stream => :to_file }}
-elsif PADRINO_ENV == 'staging'
-  PADRINO_LOGGER = { :staging => { :log_level => :debug, :stream => :to_file }}
-end
+Padrino::Logger::Config[:production] = { :log_level => :debug, :stream => :to_file }
+Padrino::Logger::Config[:staging] = { :log_level => :debug, :stream => :to_file } if PADRINO_ENV == 'staging'
 
 Padrino.load!
