@@ -171,7 +171,7 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
-    will_paginate (3.0.3)
+    will_paginate (3.0.5)
     zk (1.7.5)
       logging (~> 1.7.2)
       zookeeper (~> 1.4.0)
@@ -205,4 +205,4 @@ DEPENDENCIES
   unicorn
   webmock
   webrat
-  will_paginate (= 3.0.3)
+  will_paginate (~> 3.0.5)
