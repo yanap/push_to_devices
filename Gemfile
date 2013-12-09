@@ -10,7 +10,7 @@ source 'https://rubygems.org'
 # gem 'trinidad', :platform => 'jruby'
 
 # Project requirements
-gem 'rake'
+gem 'rake', '0.9.6'
 gem 'sinatra-flash', :require => 'sinatra/flash'
 
 # Component requirements
@@ -49,7 +49,7 @@ group "test" do
 end
 
 # monitor server
-gem 'bluepill'
+gem "bluepill",   "~> 0.0.66"
 
 # Launch server
 gem 'unicorn'
