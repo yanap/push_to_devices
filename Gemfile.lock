@@ -181,7 +181,7 @@ GEM
     zk (1.7.5)
       logging (~> 1.7.2)
       zookeeper (~> 1.4.0)
-    zookeeper (1.4.3)
+    zookeeper (1.4.7)
 
 PLATFORMS
   ruby
@@ -212,3 +212,4 @@ DEPENDENCIES
   webmock
   webrat
   will_paginate!
+  zookeeper (~> 1.4.7)
