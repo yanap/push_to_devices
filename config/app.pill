@@ -71,7 +71,7 @@ Bluepill.application('push_to_devices', bluepill_opts) do |app|
     process.uid = process.gid = 'deployer'
   end
 
-  4.times do |i|
+  1.times do |i|
     app.process("resque-#{i}") do |process|
 
       process.working_dir = working_dir
